@@ -33,7 +33,6 @@ var LazyLoad = {
                 }
 
                 var limit = container.offset().top + container.outerHeight() - offset;
-                // var limit = container.offset().top + container.outerHeight() - (container.outerHeight()*30/100);
 
                 if (top > limit && ! locked && currentPage < lazy_load.maxPages) {
                     locked = true;
@@ -42,7 +41,7 @@ var LazyLoad = {
                     data.paged = ++currentPage;
 
                     var success = function( response, status ) {
-                        if( "success" == status && response.length && '0' != response) {
+                        if("success" == status && response.length && '0' != response) {
                             $(response).hide().appendTo(container).fadeIn(200);
                             locked = false;
                         } else {

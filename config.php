@@ -19,5 +19,9 @@ define( 'DEFAULT_LAZYLOAD_CONTAINER_CLASS', '.js-load-more' );
 define( 'DEFAULT_LAZYLOAD_TRIGGER_OFFSET', 'auto' );
 // define( 'DEFAULT_LAZYLOAD_TRIGGER_OFFSET', 400 );
 
-// Default percentage for auto trigger offset
+// Default percentage for auto trigger offset. Only use if DEFAULT_LAZYLOAD_TRIGGER_OFFSET == auto
 define( 'DEFAULT_LAZYLOAD_TRIGGER_OFFSET_AUTO_PERCENT', 40 );
+
+// Default query vars for lazyload
+define( 'DEFAULT_LAZYLOAD_QUERY_VARS', false );
+// define( 'DEFAULT_LAZYLOAD_QUERY_VARS', ['posts_per_page' => 3, ...] );

@@ -23,7 +23,20 @@ function ajax_args() {
 	wp_enqueue_script( 'lazy-load' );
 
 	global $wp, $wp_query;
-	$params = $wp->query_vars;
+
+	/*
+	 * Custom query vars to lazyload content
+	 */
+	if(defined('DEFAULT_LAZYLOAD_QUERY_VARS') && DEFAULT_LAZYLOAD_QUERY_VARS && is_array(DEFAULT_LAZYLOAD_QUERY_VARS)){
+		$wp_query->query_vars = array_merge($wp_query->query_vars, DEFAULT_LAZYLOAD_QUERY_VARS);
+	}
+	if(defined('LAZYLOAD_QUERY_VARS') && LAZYLOAD_QUERY_VARS && is_array(LAZYLOAD_QUERY_VARS)){
+		$wp_query->query_vars = array_merge($wp_query->query_vars, LAZYLOAD_QUERY_VARS);
+	}
+
+	$wp_query->query_vars = apply_filters('lazyload_query_vars', $wp_query->query_vars);
+
+	$params = $wp_query->query_vars;
 
 	wp_localize_script(
 	  	'lazy-load',
@@ -40,7 +53,7 @@ function ajax_args() {
 }
 
 function get_ajax_content() {
-	// add_filter('pre_option_posts_per_page', __NAMESPACE__ . '\\init_posts_per_page');
+	add_filter('pre_option_posts_per_page', __NAMESPACE__ . '\\init_posts_per_page');
 	$template = $_GET['template'];
 	wp();
 	ob_start();
