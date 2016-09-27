@@ -37,10 +37,10 @@ data-wrapper  	= <ID WRAPPER>
 Exemple :
 
  ```php
-<div id="news-wrapper" class="block__news-container" >
-	<?php get_template_part('template-parts/news-current-page'); ?>
+<div id="wrapper">
+	<?php get_template_part('template-parts/my-template'); ?>
 </div>
-<button data-template="template-parts/news-current-page" data-wrapper="news-wrapper" role="button" class="js-load-more btn btn-primary btn-panel-next js-nextarticles">
+<button data-template="template-parts/my-template" data-wrapper="wrapper" role="button" class="js-load-more">
 	<?= __('Afficher plus d\'articles', 'asl-correspondants'); ?>
 </button>
 ```
@@ -56,8 +56,8 @@ data-template 	= <PATH FROM YOUR THEME FOLDER>
 Exemple : 
 
 ```php
-<div class="block__news-container js-load-more"  data-template="template-parts/news-current-page">
-    <?php get_template_part('template-parts/news-current-page'); ?>
+<div class="js-load-more"  data-template="template-parts/my-template">
+    <?php get_template_part('template-parts/my-template'); ?>
 </div>
 ```
 
