@@ -66,9 +66,6 @@ Exemple :
 You can change few options in your config file
 
 ```php
-/*
- * Params DEFAULT
- */
 // Default container class
 define( 'LAZYLOAD_CONTAINER_CLASS', '.js-load-more' );
 
