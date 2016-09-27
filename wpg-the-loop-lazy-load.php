@@ -36,14 +36,18 @@ function ajax_args() {
 
 	$wp_query->query_vars = apply_filters('lazyload_query_vars', $wp_query->query_vars);
 
-	$params = $wp_query->query_vars;
+	/*
+	 * Trigger mode
+	 */
+	// $trigger_mode = apply_filters('lazyload_trigger_mode', (defined('LAZYLOAD_TRIGGER_MODE') && LAZYLOAD_TRIGGER_MODE ? LAZYLOAD_TRIGGER_MODE : DEFAULT_LAZYLOAD_TRIGGER_MODE), $wp_query);
+
 
 	wp_localize_script(
 	  	'lazy-load',
 	  	'lazy_load',
 	  	array(
 	    	'url'       		=> admin_url( 'admin-ajax.php' ),
-	    	'queryVars' 		=> $params,
+	    	'queryVars' 		=> $wp_query->query_vars,
 	    	'maxPages' 			=> $wp_query->max_num_pages,
 	    	'containerClass' 	=> (defined('LAZYLOAD_CONTAINER_CLASS') && !empty(LAZYLOAD_CONTAINER_CLASS) ? LAZYLOAD_CONTAINER_CLASS : DEFAULT_LAZYLOAD_CONTAINER_CLASS),
 	    	'triggerOffset' 	=> (defined('LAZYLOAD_TRIGGER_OFFSET') && !empty(LAZYLOAD_TRIGGER_OFFSET) ? LAZYLOAD_TRIGGER_OFFSET : DEFAULT_LAZYLOAD_TRIGGER_OFFSET),
