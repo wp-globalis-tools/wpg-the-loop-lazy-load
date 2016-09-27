@@ -24,7 +24,7 @@ wp plugin activate wpg-the-loop-lazy-load
 4. Upload the zip file that you downloaded.
 
 
-## Configuration
+## How to use
 
 ### Button :
 
@@ -59,4 +59,27 @@ Exemple :
 <div class="block__news-container js-load-more"  data-template="template-parts/news-current-page">
     <?php get_template_part('template-parts/news-current-page'); ?>
 </div>
+```
+
+## Configuration
+
+You can change few options in your config file
+
+```php
+/*
+ * Params DEFAULT
+ */
+// Default container class
+define( 'LAZYLOAD_CONTAINER_CLASS', '.js-load-more' );
+
+// Default trigger offset : auto | <pixel>
+define( 'LAZYLOAD_TRIGGER_OFFSET', 'auto' );
+// define( 'LAZYLOAD_TRIGGER_OFFSET', 400 );
+
+// Default percentage for auto trigger offset. Only use if DEFAULT_LAZYLOAD_TRIGGER_OFFSET == auto
+define( 'LAZYLOAD_TRIGGER_OFFSET_AUTO_PERCENT', 40 );
+
+// Default query vars for lazyload
+define( 'LAZYLOAD_QUERY_VARS', false );
+// define( 'LAZYLOAD_QUERY_VARS', ['posts_per_page' => 3, ...] );
 ```
