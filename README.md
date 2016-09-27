@@ -34,10 +34,29 @@ data-template 	= <PATH FROM YOUR THEME FOLDER>
 data-wrapper  	= <ID WRAPPER> 
 ```
 
-### Scroll
+Exemple :
 
  ```php
+<div id="news-wrapper" class="block__news-container" >
+	<?php get_template_part('template-parts/news-current-page'); ?>
+</div>
+<button data-template="template-parts/news-current-page" data-wrapper="news-wrapper" role="button" class="js-load-more btn btn-primary btn-panel-next js-nextarticles">
+	<?= __('Afficher plus d\'articles', 'asl-correspondants'); ?>
+</button>
+```
+
+### Scroll
+
 Add attributes on container : 
+ ```php
 class			= "js-load-more" 
 data-template 	= <PATH FROM YOUR THEME FOLDER> 
+```
+
+Exemple : 
+
+```php
+<div class="block__news-container js-load-more"  data-template="template-parts/news-current-page">
+    <?php get_template_part('template-parts/news-current-page'); ?>
+</div>
 ```
