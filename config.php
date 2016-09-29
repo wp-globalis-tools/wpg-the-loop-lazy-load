@@ -15,6 +15,9 @@ define( 'LL_JS_PATH', LL_ASSETS_PATH.'/js' );
 // Default container class
 define( 'DEFAULT_LAZYLOAD_CONTAINER_CLASS', '.js-load-more' );
 
+// Default trigger mode : scroll | button
+define( 'DEFAULT_LAZYLOAD_TRIGGER_MODE', 'scroll' );
+
 // Default trigger offset : auto | <pixel>
 define( 'DEFAULT_LAZYLOAD_TRIGGER_OFFSET', 'auto' );
 // define( 'DEFAULT_LAZYLOAD_TRIGGER_OFFSET', 400 );
