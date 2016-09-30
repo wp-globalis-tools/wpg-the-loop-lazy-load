@@ -111,7 +111,7 @@ function get_query_data($query) {
 	return ['maxPages' => $query->max_num_pages, 'queryVars' => $query->query_vars];
 }
 
-function setup_pre_option_get($queryVars){
+function setup_pre_option_get(){
 	if(!isset($_GET) || empty($_GET)){
 		return;
 	}
