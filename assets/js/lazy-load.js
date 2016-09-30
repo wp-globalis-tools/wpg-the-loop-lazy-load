@@ -4,7 +4,7 @@ var LazyLoad = {
                     action: 'get_ajax_content',
                     template: $(lazy_load.containerClass).data("template"),
                 },
-    currentPage: lazy_load.queryVars.paged,
+    currentPage: lazy_load.queries['queryVars'].paged,
     locked: false,
 
 	init: function() {
@@ -47,10 +47,10 @@ var LazyLoad = {
         }
     },
     loadContent: function(container) {
-        if(! LazyLoad.locked && LazyLoad.currentPage < lazy_load.maxPages){
+        if(! LazyLoad.locked && LazyLoad.currentPage < lazy_load.queries['maxPages']){
             LazyLoad.locked = true;
             var data = LazyLoad.ajaxParams;
-            $.extend(data,lazy_load.queryVars);
+            $.extend(data,lazy_load.queries['queryVars']);
             data.paged = ++LazyLoad.currentPage;
 
             var success = function( response, status ) {
