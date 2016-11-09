@@ -5,7 +5,7 @@ Description:  Load more with main query.
 Version:      1.0.0
 Author:       David Daugreilh, Pierre Dargham
 */
-namespace WPG\LazyLoad;
+namespace Globalis\LazyLoad;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // don't access directly
