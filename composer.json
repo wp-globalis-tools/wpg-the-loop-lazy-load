@@ -1,0 +1,20 @@
+{
+    "name": "globalis/wpg-the-loop-lazy-load",
+    "description": "Ajax Load more with WordPress main query",
+    "type": "wordpress-plugin",
+    "homepage": "https://github.com/wp-globalis-tools/wpg-the-loop-lazy-load",
+		"authors": [
+			{
+				"name": "Pierre Dargham",
+				"homepage": "https://github.com/pierre-dargham/"
+			},
+			{
+				"name": "David Daugreilh",
+				"homepage": "https://github.com/davddo"
+			},
+			{
+				"name": "GLOBALIS media systems",
+				"homepage": "https://www.globalis-ms.com/"
+			}
+		]
+}

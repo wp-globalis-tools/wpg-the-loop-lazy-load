@@ -1,10 +1,16 @@
 <?php
-/*
-Plugin Name:  WPG Lazy Load
-Description:  Load more with main query.
-Version:      1.0.0
-Author:       David Daugreilh, Pierre Dargham
-*/
+/**
+ * Plugin Name:         WPG The Loop Lazy Load
+ * Plugin URI:          https://github.com/wp-globalis-tools/wpg-the-loop-lazy-load
+ * Description:         Ajax Load more with WordPress main query
+ * Author:              David Daugreilh, Pierre Dargham, Globalis Media Systems
+ * Author URI:          https://www.globalis-ms.com
+ *
+ * Version:             0.2.0
+ * Requires at least:   4.0.0
+ * Tested up to:        4.4.2
+ */
+
 namespace Globalis\LazyLoad;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,19 +25,30 @@ add_action( 'wp_ajax_get_ajax_content', __NAMESPACE__ . '\\get_ajax_content' );
 add_action( 'wp_ajax_nopriv_get_ajax_content', __NAMESPACE__ . '\\get_ajax_content' );
 
 function ajax_args() {
-	wp_register_script( 'lazy-load', LL_JS_PATH.'/lazy-load.js', 'jquery', '1.0' );
-	wp_enqueue_script( 'lazy-load' );
+	// wp_register_script( 'lazy-load', LL_JS_PATH.'/lazy-load.js', ['jquery'], '1.0' );
+	
+	if(!apply_filters('wpg-the-loop\load', true)) {
+		return;
+	}
+
+	wp_enqueue_script( 'lazy-load', LL_JS_PATH.'/lazy-load.js', ['jquery'], null, true);
 
 	global $wp, $wp_query;
 
 	/*
 	 * Custom query vars to lazyload content
 	 */
-	if(defined('DEFAULT_LAZYLOAD_QUERY_VARS') && DEFAULT_LAZYLOAD_QUERY_VARS && is_array(DEFAULT_LAZYLOAD_QUERY_VARS)){
-		$wp_query->query_vars = array_merge($wp_query->query_vars, DEFAULT_LAZYLOAD_QUERY_VARS);
+	if(defined('DEFAULT_LAZYLOAD_QUERY_VARS') && is_serialized(DEFAULT_LAZYLOAD_QUERY_VARS)){
+		$default_lazyload_query_vars = unserialize(DEFAULT_LAZYLOAD_QUERY_VARS);
+		if(!empty($default_lazyload_query_vars)) {
+			$wp_query->query_vars = array_merge($wp_query->query_vars, $default_lazyload_query_vars);
+		}
 	}
-	if(defined('LAZYLOAD_QUERY_VARS') && LAZYLOAD_QUERY_VARS && is_array(LAZYLOAD_QUERY_VARS)){
-		$wp_query->query_vars = array_merge($wp_query->query_vars, LAZYLOAD_QUERY_VARS);
+	if(defined('LAZYLOAD_QUERY_VARS') && is_serialized(LAZYLOAD_QUERY_VARS)){
+		$lazyload_query_vars = unserialize(LAZYLOAD_QUERY_VARS);
+		if(!empty($lazyload_query_vars)) {
+			$wp_query->query_vars = array_merge($wp_query->query_vars, $lazyload_query_vars);
+		}
 	}
 
 	$wp_query->query_vars = apply_filters('lazyload_query_vars', $wp_query->query_vars);

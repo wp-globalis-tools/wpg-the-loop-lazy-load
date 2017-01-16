@@ -1,4 +1,6 @@
-var LazyLoad = {
+(function($) {
+
+window.LazyLoad = {
     container: $(lazy_load.containerClass),
     ajaxParams: {
                     action: 'get_ajax_content',
@@ -57,6 +59,7 @@ var LazyLoad = {
                 if("success" == status && response.length && '0' != response) {
                     $(response).hide().appendTo(container).fadeIn(200);
                     LazyLoad.locked = false;
+                    LazyLoad.container.bindAll();
                 } else {
                     LazyLoad.locked = true;
                 }
@@ -77,6 +80,6 @@ var LazyLoad = {
     }
 };
 
-jQuery( function($) {
+
     LazyLoad.init();
-});
+})(jQuery);
