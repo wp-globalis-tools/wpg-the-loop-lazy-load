@@ -53,6 +53,8 @@ window.LazyLoad = {
             LazyLoad.locked = true;
             var data = LazyLoad.ajaxParams;
             $.extend(data,lazy_load.queryVars);
+            if(LazyLoad.currentPage == 0)
+                LazyLoad.currentPage++;
             data.paged = ++LazyLoad.currentPage;
 
             var success = function( response, status ) {
