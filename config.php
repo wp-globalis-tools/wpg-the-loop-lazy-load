@@ -26,5 +26,5 @@ define( 'DEFAULT_LAZYLOAD_TRIGGER_OFFSET', 'auto' );
 define( 'DEFAULT_LAZYLOAD_TRIGGER_OFFSET_AUTO_PERCENT', 40 );
 
 // Default query vars for lazyload
-// define( 'DEFAULT_LAZYLOAD_QUERY_VARS', false );
-define( 'DEFAULT_LAZYLOAD_QUERY_VARS', serialize(['posts_per_page' => 6]) );
+define( 'DEFAULT_LAZYLOAD_QUERY_VARS', false );
+//define( 'DEFAULT_LAZYLOAD_QUERY_VARS', serialize(['posts_per_page' => 6]) );
